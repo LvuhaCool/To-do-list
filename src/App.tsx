@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-interface ITodo {
+import Header from "./components/Header/Header";
+import MainSection from "./components/MainSection/MainSection";
+
+export interface ITodo {
   id: number;
   name: string;
   description?: string;
@@ -13,7 +16,7 @@ function App() {
   const addToDo = (properties: Omit<ITodo, "id">) => {
     setToDo((prevToDos) => {
       const newID =
-        toDos.length > 0 ? Math.max(...toDos.map((obj) => obj.id)) + 1 : 1;
+        prevToDos.length > 0 ? Math.max(...toDos.map((obj) => obj.id)) + 1 : 1;
 
       const newToDo: ITodo = {
         ...properties,
@@ -22,6 +25,13 @@ function App() {
       return [...prevToDos, newToDo];
     });
   };
+
+  return (
+    <>
+      <Header addToDo={addToDo} />
+      <MainSection toDos={toDos} />
+    </>
+  );
 }
 
 export default App;
