@@ -1,4 +1,5 @@
 import styles from "./MainSection.module.css";
+import trashIcon from "./../../assets/trash-icon.svg";
 
 import { type ITodo } from "./../../App";
 import { AnimatePresence, motion } from "framer-motion";
@@ -6,9 +7,10 @@ import { useState } from "react";
 
 interface MainSectionProps {
   toDos: ITodo[];
+  onRemoveTask: (id: number) => void;
 }
 
-function MainSection({ toDos }: MainSectionProps) {
+function MainSection({ toDos, onRemoveTask }: MainSectionProps) {
   const [openedIDs, setOpenedIDs] = useState<number[]>([]);
 
   const toggleIDs = (id: number) => {
@@ -47,6 +49,12 @@ function MainSection({ toDos }: MainSectionProps) {
                   )}
                 </div>
               )}
+              <button
+                className={styles.removeTaskButton}
+                onClick={() => onRemoveTask(toDo.id)}
+              >
+                <img src={trashIcon} alt="Remove task" />
+              </button>
             </motion.div>
           );
         })}

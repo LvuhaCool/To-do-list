@@ -11,20 +11,21 @@
 .listItem {
     min-width: 600px;
     width: fit-content;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
-    height: 75px;
+    padding: 30px;
+    min-height: 75px;
     background-color: #fff;
     color: #d10d2a;
     border: 0.6px solid #303030;
     border-radius: 11px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     column-gap: 60px;
     font-weight: 500;
     font-size: 18px;
     cursor: default;
+    box-sizing: border-box;
 }
 
 .descriptionWrapper {
@@ -32,4 +33,17 @@
     flex-direction: column;
     align-items: center;
     row-gap: 25px;
+}
+
+.removeTaskButton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 17%;
+    padding: 6px;
+    transition: background-color 0.3s linear;
+}
+
+.removeTaskButton:hover {
+    background-color: #ffeded;
 }

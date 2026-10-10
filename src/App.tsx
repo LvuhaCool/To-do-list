@@ -26,10 +26,14 @@ function App() {
     });
   };
 
+  const handleRemoveTask = (id: number) => {
+    setToDo((prevToDos) => prevToDos.filter((task) => task.id !== id));
+  };
+
   return (
     <>
       <Header addToDo={addToDo} />
-      <MainSection toDos={toDos} />
+      <MainSection toDos={toDos} onRemoveTask={handleRemoveTask} />
     </>
   );
 }

@@ -1,0 +1,3 @@
+<div className={styles.removeTaskWindow}><p className={styles.removeTaskWindowText}>Вы точно хотите удалить эту задачу?</p></div>
+
+Берем через useState() булевую переменную. Ставим ей false по умолчанию. По клику на кнопку удаления задачи меняем эту переменную. Рендерится код выше (только при значении переменной true). И там еще кнопка, вызыващая handleRemoveTask() (функцию из App.tsx)
