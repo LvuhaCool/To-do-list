@@ -1,0 +1,75 @@
+:root {
+    --bg-color: #1a1a1a;
+    --red: #d10d2a;
+    --red-hover: #b80d26;
+}
+
+.header {
+    width: 100vw;
+    background-color: var(--bg-color);
+    height: fit-content;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: height 0.3s linear;
+    border-bottom: 0.67px solid #303030;
+}
+
+.newToDo {
+    width: 222px;
+    height: 60px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 1px;
+    font-size: 18px;
+    color: #fff;
+    transition: background-color 0.25s linear;
+}
+
+.newToDo:hover {
+    background-color: var(--red-hover);
+}
+
+.inputs {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    align-items: center;
+}
+
+.inputs input {
+    width: 200px;
+    height: 55px;
+    border: none;
+    border-radius: 6px;
+    padding-left: 11px;
+    padding-right: 8px;
+    font-size: 14px;
+}
+
+.inputs input::placeholder {
+    font-size: 13px;
+    color: #807577;
+}
+
+.add {
+    width: 155px;
+    height: 55px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s linear;
+}
+
+.add:hover {
+    background-color: #e3e3e3;
+}
