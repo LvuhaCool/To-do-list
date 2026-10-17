@@ -7,27 +7,49 @@ export interface ITodo {
   id: number;
   name: string;
   description?: string;
-  date: Date;
+  date: string;
 }
 
+const LOCAL_STORAGE_KEY = "tasksLocalStorageKey";
+
 function App() {
-  const [toDos, setToDo] = useState<ITodo[]>([]);
+  const StoreAndRender = (arr: ITodo[]) => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arr));
+  };
+
+  const [toDos, setToDo] = useState<ITodo[]>(() => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const addToDo = (properties: Omit<ITodo, "id">) => {
     setToDo((prevToDos) => {
       const newID =
-        prevToDos.length > 0 ? Math.max(...toDos.map((obj) => obj.id)) + 1 : 1;
+        prevToDos.length > 0
+          ? Math.max(...prevToDos.map((obj) => obj.id)) + 1
+          : 1;
 
       const newToDo: ITodo = {
         ...properties,
         id: newID,
       };
-      return [...prevToDos, newToDo];
+
+      const updatedToDos = [...prevToDos, newToDo];
+
+      StoreAndRender(updatedToDos);
+
+      return updatedToDos;
     });
   };
 
   const handleRemoveTask = (id: number) => {
-    setToDo((prevToDos) => prevToDos.filter((task) => task.id !== id));
+    setToDo((prevToDos) => {
+      const updatedToDos = prevToDos.filter((task) => task.id !== id);
+      StoreAndRender(updatedToDos);
+
+      return updatedToDos;
+    });
   };
 
   return (
